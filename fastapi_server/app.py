@@ -1,35 +1,11 @@
+# to run this file: uvicorn app:app --reload
 from fastapi import FastAPI
+
+from routes.student import student_router
+from routes.staff import staff_router
+
 app = FastAPI()
 
-@app.get("/getStudents")
-def getstudents():
-    return {"get student method called"}
-
-#localhost:8000/getStudents
-
-@app.post("/addStudent")
-def addstudent():
-    return {"add student method called"}
-
-#localhost:8000/addStudent
-
-@app.put("/updateStudent")
-def updatestudent():
-    return {"update student method called"}
-
-#localhost:8000/updateStudent
-
-@app.delete("/deleteStudent")       
-def deletestudent():
-    return {"delete student method called"}
-#localhost:8000/deleteStudent
-
-@app.get("/particularStudent/{userid}")
-def particularstudent(userid: int):
-    return {"particular student method called for user id": userid}
-#localhost:8000/particularStudent/1
-
-@app.get("/getdeptdetails")
-def getdeptdetails(dept:str, mark:int):
-    return{"dept": dept, "mark": mark}
+app.include_router(student_router)
+app.include_router(staff_router)
     
