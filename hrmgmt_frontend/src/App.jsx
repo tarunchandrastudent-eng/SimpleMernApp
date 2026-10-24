@@ -6,6 +6,7 @@ import Contact from './pages/Contact'
 import Login from './pages/Login'
 import {Routes,Route} from 'react-router-dom'
 import UserHome from './pages/UserHome'
+import Register from './pages/Register'
 
 function App() {  
   return (
@@ -13,6 +14,7 @@ function App() {
      <Header_component></Header_component> 
     <Routes>
        <Route path ="/Login" element ={<Login/>}> </Route>
+       <Route path="/Register" element={<Register/>}></Route>
        <Route path="/Home" element={<Home/>}></Route>
        <Route path="/about" element={<About/>}></Route>
        <Route path="/contact" element={<Contact/>}></Route>
