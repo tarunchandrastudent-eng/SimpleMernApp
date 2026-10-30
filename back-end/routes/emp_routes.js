@@ -14,11 +14,11 @@ router.post("/login",async (req,res)=>{
     let data=req.body;
     let emailcheck=await users.findOne({email:data.email});
     if(emailcheck){
-let matchpass=await bcrypt.compare(emailcheck.password,data.password);
+let matchpass = await bcrypt.compare(data.password, emailcheck.password);
 if(matchpass){
     res.send({message:"Login Success",
         user:{
-            __id:emailcheck.__id,
+            _id:emailcheck._id,
             name:emailcheck.name,
             email:emailcheck.email,
             role:emailcheck.role

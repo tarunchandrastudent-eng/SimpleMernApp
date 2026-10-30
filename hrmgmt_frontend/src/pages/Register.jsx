@@ -15,7 +15,7 @@ function register(){
             }
         )
         let data = await res.json()
-        if (res.OK){
+        if (res.ok){
             console.log("data registered sucessful")
         }
         else{

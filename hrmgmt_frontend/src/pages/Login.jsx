@@ -14,12 +14,25 @@ function Login() {
             let req =  await fetch("http://localhost:3000/api/emp/login",
                 {
                     method:"POST",
-                    headers:{"Contents-Type":"application/json"},
+                    headers:{"Content-Type":"application/json"},
                     body:JSON.stringify({email, password})
                 }
             )
             let data = await req.json()
             console.log(data)
+            if(data.user){
+                // we use JSON.stringify to convert string data into json fromat
+                localStorage.setItem("currentuser",JSON.stringify(data.user))
+                if(data.user.role=="HR"){
+                    navigate("/HrHome")
+                }
+                else{
+                    navigate("/EmpHome")
+                }
+            }
+            else{
+                setError(data.message)
+            }
         }
     }
 
